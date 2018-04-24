@@ -1,0 +1,27 @@
+.surveys {
+	border: 1px solid #000;
+	border-bottom: none;
+}
+
+.surveys .survey {
+	display: flex;
+	border-bottom: 1px solid #000;
+}
+
+.surveys .survey > * {
+	width: 50%;
+	padding: 5px 10px;
+}
+
+.surveys .survey.survey-head {
+	font-weight: 700;
+	background-color: #ccc;
+}
+
+.surveys .survey:not(.survey-head) {
+	cursor: pointer;
+}
+
+.surveys .survey .survey-name {
+	border-right: 1px solid #000; 
+}
