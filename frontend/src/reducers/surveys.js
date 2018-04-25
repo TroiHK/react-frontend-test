@@ -56,6 +56,7 @@ export default function reducer(state={
                 ...state, 
                 searchValue, 
                 surveyDetail: null,
+                selectedSurvey: null,
                 visibleSurveys
             };
         }
