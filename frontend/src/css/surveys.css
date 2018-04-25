@@ -18,10 +18,28 @@
 	background-color: #ccc;
 }
 
+.surveys .survey.selected {
+	background-color: #ccc;
+}
+
 .surveys .survey:not(.survey-head) {
 	cursor: pointer;
 }
 
 .surveys .survey .survey-name {
 	border-right: 1px solid #000; 
+}
+
+.survey-detail > div {
+	padding: 20px 15px 10px;
+	background-color: #ccc;
+	border-bottom: 1px solid #fff;
+}
+
+.survey-detail .question {
+	font-weight: 700;
+}
+
+.survey-detail .question + p {
+	padding-left: 20px;
 }

@@ -12,7 +12,7 @@ class Nav extends Component {
         };
     }
 
-    toggleCollapse() {
+    toggleCollapse = () => {
         const collapsed = !this.state.collapsed;
         this.setState({collapsed});
     }

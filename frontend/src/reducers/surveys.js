@@ -2,6 +2,8 @@ export default function reducer(state={
         surveys: [],
         visibleSurveys: [],
         surveyDetail: null,
+        selectedSurvey: null,
+        searchValue: '',
         fetching: false,
         fetched: false,
         error: null,
@@ -39,6 +41,7 @@ export default function reducer(state={
                 ...state,
                 fetching: false,
                 fetched: true,
+                selectedSurvey: action.code,
                 surveyDetail: action.payload,
             }
         }

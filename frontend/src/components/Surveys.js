@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import classnames from 'classnames';
 import { fetchSurveys, fetchSurveyDetail } from '../actions/surveys';
+
+import '../css/surveys.css';
 
 import QCM from "./layout/QCM";
 import Numberic from "./layout/Numberic";
 import Date from "./layout/Date";
-
-import '../css/surveys.css';
 
 class Surveys extends Component {
     handleClickDetail = (code) => {
@@ -28,7 +29,15 @@ class Surveys extends Component {
         })
         .map((s, i) => {
             return (
-                <div className="survey" key={i} onClick={ () => this.handleClickDetail(s.code) }>
+                <div 
+                    className={ 
+                        classnames({
+                            'survey': true,
+                            'selected': this.props.selectedSurvey === s.code,
+                        }) 
+                    } 
+                    key={i} onClick={ () => this.handleClickDetail(s.code) }
+                >
                     <div className="survey-name">
                         {s.name}
                     </div>
@@ -45,19 +54,19 @@ class Surveys extends Component {
             switch(s.type) {
                 case "qcm": {
                     return (
-                        <QCM answerInfo={s}/>
+                        <QCM key={i} answerInfo={s}/>
                     );
                 }
 
                 case "numeric": {
                     return (
-                        <Numberic answerInfo={s}/>
+                        <Numberic key={i} answerInfo={s}/>
                     );
                 }
 
                 case "date": {
                     return (
-                        <Date answerInfo={s}/>
+                        <Date key={i} answerInfo={s}/>
                     );
                 }
 
@@ -67,20 +76,25 @@ class Surveys extends Component {
         }) : null;
 
         return (
-            <div>
-                <div className="surveys">
-                    <div className="survey survey-head">
-                        <div className="survey-name">
-                            Name
+            <div className="row">
+                <div className="col-sm-4">
+                    <div className="surveys">
+                        <div className="survey survey-head">
+                            <div className="survey-name">
+                                Name
+                            </div>
+                            <div className="survey-code">
+                                Code
+                            </div>
                         </div>
-                        <div className="survey-code">
-                            Code
-                        </div>
+                        {surveysHTML}
                     </div>
-                    {surveysHTML}
                 </div>
-                <div className="survey-detail">
-                    {surveyHTML}
+                
+                <div className="col-sm-8">
+                    <div className="survey-detail">
+                        {surveyHTML}
+                    </div>
                 </div>
             </div>
         );
@@ -91,6 +105,7 @@ const mapStateToProps = (state, ownProps) => ({
 	surveys: state.surveys.surveys,
     visibleSurveys: state.surveys.visibleSurveys,
     surveyDetail: state.surveys.surveyDetail,
+    selectedSurvey: state.surveys.selectedSurvey,
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({

@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 
+import './App.css';
+
 import Nav from "./components/layout/Nav";
 import Footer from "./components/layout/Footer";
 import Surveys from './components/Surveys';
-
-import './App.css';
 
 class App extends Component {
     render() {

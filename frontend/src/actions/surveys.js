@@ -18,7 +18,7 @@ export const fetchSurveyDetail = (code) => {
         dispatch({type: "FETCH_SURVEY_DETAIL"});
         axios.get("/api/"+code+".json")
         .then((response) => {
-            dispatch({type: "FETCH_SURVEY_DETAIL_FULFILLED", payload: response.data})
+            dispatch({type: "FETCH_SURVEY_DETAIL_FULFILLED", payload: response.data, code: code})
         })
         .catch((err) => {
             dispatch({type: "FETCH_SURVEY_DETAIL_REJECTED", payload: err})
